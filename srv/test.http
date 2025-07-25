@@ -1,0 +1,68 @@
+ 
+GET http://localhost:4004/odata/v4/CatalogService
+ 
+###
+GET http://localhost:4004/odata/v4/CatalogService/$metadata
+ 
+###
+GET http://localhost:4004/odata/v4/CatalogService/EmployeeDetails
+ 
+###
+GET http://localhost:4004/odata/v4/my/testing(name='ABCDE')
+ 
+###
+ 
+GET http://localhost:4004/odata/v4/CatalogService/AddressDetails?$top=2
+ 
+###
+ 
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeDetails
+Content-Type: application/json
+ 
+{
+    "nameFirst" : "RAM",
+    "nameLast" : "KUMAR",
+    "sex" : "M",
+    "phoneNumber" : 9898989898,
+    "email" : ram.kumar@gmail.com,
+    "salaryAmount" : 100000
+}
+ 
+###
+GET http://localhost:4004/odata/v4/CatalogService/EmployeeDetails?$filter=nameFirst eq 'Sally'
+
+###
+GET http://localhost:4004/odata/v4/CatalogService/POs(NODE_KEY='74867AD200E41EDBA5D8B0C98DC96052')?$expand=Items
+
+###
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19807FB
+Content-Type: application/json
+ 
+{
+    "salary": 100000,
+    "Currency_code" : "USD"
+}
+
+###
+POST http://localhost:4004/odata/v4/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC2A052')/CatalogService.discountOnPrice
+Content-Type: application/json
+ 
+{
+ 
+}
+
+###
+GET http://localhost:4004/odata/v4/CatalogService/POs('74867AD200E41EDBA5D8B0C98DC2A052')/CatalogService.biggestOrder()
+
+###
+GET http://localhost:4004/odata/v4/CatalogService/getEmployee(name='Sally')
+ 
+###
+GET http://localhost:4004/odata/v4/CatalogService/getAllEmployees
+###
+POST http://localhost:4004/odata/v4/CatalogService/updateSalaryOfEmployee
+Content-Type: application/json
+ 
+{
+    "name" : "Sally"
+}
