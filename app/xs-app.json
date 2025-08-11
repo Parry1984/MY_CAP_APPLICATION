@@ -1,0 +1,19 @@
+{
+    "welcomeFile" : "myfioriapplication/webapp/",
+    "authenticationMethod": "route",
+    "sessionTimeout" : 100,
+    "pluginMetadataEndpoint" : "/metadata",
+    "routes" : [
+        {
+            "source" : "^/myfioriapplication/webapp/(.*)",
+            "target" : "$1",
+            "localDir" : "myfioriapplication/webapp/",
+            "authenticationType" : "xsuaa"
+        },
+        {
+            "source" : "^/(.*)$",
+            "destination" : "srv-api",
+            "authenticationType" : "xsuaa"
+        }
+    ]
+}

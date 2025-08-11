@@ -30,7 +30,9 @@ module.exports = cds.service.impl( async function(){
             return "Error : " + error.toString();
         }
     });
- 
+    this.on('getOrderDefaults', async(req)=>{
+        return {OVERALL_STATUS: 'N'};
+    });
     this.on('biggestOrder', async(req, res) => {
         try {
             // Step - 1 : Get the parameters

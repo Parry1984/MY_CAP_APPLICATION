@@ -1,0 +1,58 @@
+{
+  "xsappname": "mycapapplication",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+     "name": "$XSAPPNAME.Viewer",
+     "description": "Someone who can view the data"
+    },
+    {
+     "name": "$XSAPPNAME.Admin",
+     "description": "Someone who can perform CRUD on the data"
+    }
+   ],
+   "attributes": [
+    {
+     "name": "myCountry",
+     "description": "Country Property",
+     "valueType": "string"
+    },
+    {
+      "name": "BankName",
+      "description": "Bank Name",
+      "valueType": "string"
+    }
+   ],
+   "role-templates": [
+    {
+     "name": "Viewer",
+     "description": "View all data from our Catalog Service",
+     "default-role-name": "Viewer : Authorized to Read Country",
+     "scope-references": [
+      "$XSAPPNAME.Viewer"
+     ],
+     "attribute-references": [
+      {
+       "name": "myCountry"
+      },
+      {
+        "name": "BankName"
+      }
+     ]
+    },
+    {
+     "name": "Admin",
+     "description": "View all data from our Catalog Service",
+     "default-role-name": "Viewer : Authorized to Read Country",
+     "scope-references": [
+      "$XSAPPNAME.Admin"
+     ]
+    }
+   ],
+  "authorities":["$ACCEPT_GRANTED_AUTHORITIES"],
+   "oauth2-configuration": {
+                      "token-validity": 900,
+                      "redirect-uris": ["https://myapp.cfapps.eu10.hana.ondemand.com","https://myapp.mydomain.com/my/logout"]
+   },
+   "xsenableasyncservice": "true"
+}
